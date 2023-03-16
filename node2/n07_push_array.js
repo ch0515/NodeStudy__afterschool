@@ -8,3 +8,7 @@ arTexts.push('hello', 'welcome', 'bye');
 
 console.log(arNumbers);
 console.log(arTexts);
+
+
+
+
