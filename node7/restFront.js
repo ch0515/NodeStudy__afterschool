@@ -1,13 +1,12 @@
-// XMLHttpRequest
-// 웹 브라우저는 서버에 데이터를 요청하기 위한 XMLHttpRequest 객체를 내장
-// 서버로부터 XML 데이터를 전송받아 처리하는 데 사용됨
-// respponseText 프로퍼티 : 서버에 요청하여 응답으로 받은 데이터를 문자열로 저장
+//XMLHttpRequest
+//웹 브라우저는 서버에 데이터를 요청하기 위한 XMLHttpRequest 객체를 내장
+//XMLHttpRequest : 서버로부터 XML테이터를 전송받아 처리하는 데 사용됨
+//respouseText() : 서버에 요청하여 응답으로 받은 데이터를 문자열로 저장
 //open() : 요청을 초기화
-//spen() : 서버에 요청 보내기 GET 방식 요청일 때 사용
-//send(string) : 서버에 요청 보냄 POST방식 요청일때 사용
-
-// setRequestHeader() 요청을 보내기전에 이 메소드를 사용하여 HTTP 요청헤더 작성할 수 있음
+//send() : 서버에 요청 보내기. GET 방식 요청일때 사용
+//send(string) : 서버에 요;청 보냄. post방식 요청일때 사용
 function getUser() {
+  // 로딩 시 사용자 가져오는 함수
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
     if (xhr.status === 200) {
@@ -20,10 +19,11 @@ function getUser() {
         span.textContent = users[key];
         var edit = document.createElement("button");
         edit.textContent = "수정";
-        edit.addEventListener("click", function () {
+        edit.addEventListener("click", () => {
+          // 수정 버튼 클릭
           var name = prompt("바꿀 이름을 입력하세요");
           if (!name) {
-            return alert("이름은 반드시 입력하셔야 합니다.");
+            return alert("이름을 반드시 입력하셔야 합니다");
           }
           var xhr = new XMLHttpRequest();
           xhr.onload = function () {
@@ -40,10 +40,10 @@ function getUser() {
         });
         var remove = document.createElement("button");
         remove.textContent = "삭제";
-        remove.addEventListener("click", function () {
-          //삭제 버튼 클릭
+        remove.addEventListener("click", () => {
+          // 삭제 버튼 클릭
           var xhr = new XMLHttpRequest();
-          xhr.onload = function () {
+          xhr.onload = () => {
             if (xhr.status === 200) {
               console.log(xhr.responseText);
               getUser();
@@ -54,23 +54,25 @@ function getUser() {
           xhr.open("DELETE", "/users/" + key);
           xhr.send();
         });
+        // appendChile() : 자식 요소를 추가
         userDiv.appendChild(span);
         userDiv.appendChild(edit);
         userDiv.appendChild(remove);
         list.appendChild(userDiv);
       });
     } else {
-      console.log(xhr.responseText);
+      console.error(xhr.responseText);
     }
   };
   xhr.open("GET", "/users");
   xhr.send();
 }
-window.onload = getUser; //로딩 시 getUser 호출
-// js에서 페이지가 로드되면 자동 실행되는 전역콜백함수.
+// window : 전역 객체 모듈
+window.onload = getUser; // 로딩 시 getUser 호출
+// js에서 페이지가 로드되면 자동 실행되는 전역콜백함수,
 // window : 웹브라우저를 담당하는 객체
-//폼 제출
-document.getElementById("form").addEventListener("submit", function (e) {
+// 폼 제출
+document.getElementById("form").addEventListener("submit", (e) => {
   e.preventDefault();
   var name = e.target.username.value;
   if (!name) {
