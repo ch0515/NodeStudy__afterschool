@@ -1,0 +1,8 @@
+response.send([body]) : 매개변수의 자료형에 따라 적절한 형태로 응답
+response.json([body]) : JSON 형식으로 응답
+response.jsonp([body]) : jsonp 지월을 통해 JSON형식으로 응답
+response.redirect() : 웹페이지 경로를 강제로 이동
+response.download() : 파일이 다운되도록
+response.sendStatus() : 응답 상태 코드를 설정한 후 응답 본문으로 전송
+response.render() : 템플릿을 렌더링
+response.sendFile() : 파일 전송
