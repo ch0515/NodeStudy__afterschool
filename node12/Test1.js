@@ -12,3 +12,11 @@ app.get('/', (req, res) => {
   </form>
   `);
 });
+
+app.post('/', (req, res) => {
+  console.log(req.body); //req.body에 name, value를 객체형식으로 넣는다.
+});
+
+app.listen(3000, () => {
+  console.log('3000포트에서 서버 시작');
+});
