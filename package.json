@@ -6,6 +6,7 @@
     "express": "^4.18.2",
     "express-error-handler": "^1.1.0",
     "express-session": "^1.17.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
   }
 }
